@@ -544,11 +544,10 @@ void display()
 int main(int argc,char** argv)
 {
     glutInit(&argc,argv);
-    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB|GLUT_DEPTH);
+    glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
     glutInitWindowPosition(10,10);
     glutInitWindowSize(1200,700);
     glutCreateWindow("TRAVELLING SALES MAN");
-    glVertex3f(28.25,14.5,0.0);
     init();
     glutDisplayFunc(display);
     glutMainLoop();
