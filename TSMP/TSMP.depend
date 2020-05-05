@@ -222,3 +222,8 @@
 1341006774 c:\program files (x86)\codeblocks\mingw\include\math.h
 	<_mingw.h>
 
+1588690611 source:c:\users\hp\desktop\travelling-salesman-cg\tsmp\main.cpp
+	<windows.h>
+	<gl/glut.h>
+	<math.h>
+

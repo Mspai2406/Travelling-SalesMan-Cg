@@ -2,6 +2,8 @@
 #define GLUT_DISABLE_ATEXIT_HACK
 #include<gl/glut.h>
 #include<math.h>
+float cloud_move=0;
+float cloud1_move=0;
 void roads()
 {
      glBegin(GL_LINES);
@@ -142,39 +144,68 @@ void houses()
     glVertex3f(9.5,24,0);
     glVertex3f(9.5,21,0);
     glEnd();
-    glBegin(GL_TRIANGLES);
+    glBegin(GL_QUADS);
     glColor3f(1,0,0);
-     glVertex3f(8,24,0.0);
-    glVertex3f(8.75,25.5,0.0);
-    glVertex3f(9.5,24,0);
+     glVertex3f(7.5,24,0.0);
+     glVertex3f(7.5,25.5,0.0);
+    glVertex3f(10,25.5,0.0);
+    glVertex3f(10,24,0);
     glEnd();
 //node 1
     glBegin(GL_QUADS);
     glColor3f(0,1,1);
-     glVertex3f(12.5,30,0.0);
-    glVertex3f(12.5,33,0.0);
-    glVertex3f(14,33,0);
-    glVertex3f(14,30,0);
+     glVertex3f(10,30,0.0);
+    glVertex3f(10,33,0.0);
+    glVertex3f(12,33,0);
+    glVertex3f(12,30,0);
     glEnd();
     glBegin(GL_TRIANGLES);
     glColor3f(.7,0.5,0);
-     glVertex3f(12.5,33,0.0);
-    glVertex3f(13.25,34.5,0.0);
-    glVertex3f(14,33,0);
+     glVertex3f(10,33,0.0);
+    glVertex3f(11,34.5,0.0);
+    glVertex3f(12,33,0);
+    glEnd();
+     glBegin(GL_QUADS);
+    glColor3f(1,.5,0);
+     glVertex3f(11,34.5,0.0);
+    glVertex3f(13.5,34.5,0.0);
+    glVertex3f(14.5,33,0);
+    glVertex3f(12,33,0);
+    glEnd();
+    glBegin(GL_QUADS);
+    glColor3f(0.8,.7,0.2);
+     glVertex3f(12,33,0.0);
+    glVertex3f(14.5,33,0.0);
+    glVertex3f(14.5,30,0);
+    glVertex3f(12,30,0);
     glEnd();
     //node 2
     glBegin(GL_QUADS);
     glColor3f(.7,0,.5);
-     glVertex3f(27.5,30,0.0);
-    glVertex3f(27.5,33,0.0);
-    glVertex3f(29,33,0);
-    glVertex3f(29,30,0);
+     glVertex3f(27.5,28,0.0);
+    glVertex3f(27.5,31,0.0);
+    glVertex3f(29,31,0);
+    glVertex3f(29,28,0);
+    glEnd();
+    glBegin(GL_QUADS);//roof
+    glColor3f(.7,0.4,.3);
+     glVertex3f(28.25,32.5,0.0);
+    glVertex3f(31.25,32.5,0.0);
+    glVertex3f(32,31,0);
+    glVertex3f(29,31,0);
+    glEnd();
+    glBegin(GL_QUADS);//ground
+    glColor3f(0,1,1);
+     glVertex3f(29,31,0.0);
+    glVertex3f(32,31,0.0);
+    glVertex3f(32,28,0);
+    glVertex3f(29,28,0);
     glEnd();
     glBegin(GL_TRIANGLES);
     glColor3f(1,0,0);
-     glVertex3f(27.5,33,0.0);
-    glVertex3f(28.25,34.5,0.0);
-    glVertex3f(29,33,0);
+     glVertex3f(27.5,31,0.0);
+    glVertex3f(28.25,32.5,0.0);
+    glVertex3f(29,31,0);
     glEnd();
     //node 3
     glBegin(GL_QUADS);
@@ -184,11 +215,12 @@ void houses()
     glVertex3f(14,10,0);
     glVertex3f(14,7,0);
     glEnd();
-    glBegin(GL_TRIANGLES);
+    glBegin(GL_QUADS);
     glColor3f(0,.4,.5);
-     glVertex3f(12.5,10,0.0);
-    glVertex3f(13.25,11.5,0.0);
-    glVertex3f(14,10,0);
+     glVertex3f(12.25,10,0.0);
+    glVertex3f(12.25,11,0.0);
+     glVertex3f(14.25,11,0.0);
+    glVertex3f(14.25,10,0);
     glEnd();
     //node 4
     glBegin(GL_QUADS);
@@ -204,34 +236,57 @@ void houses()
     glVertex3f(28.25,14.5,0.0);
     glVertex3f(29,13,0);
     glEnd();
+     glBegin(GL_QUADS);//roof
+    glColor3f(.5,.2,.7);
+     glVertex3f(28.25,14.5,0.0);
+    glVertex3f(30.5,14.5,0.0);
+    glVertex3f(31.5,13,0);
+    glVertex3f(29,13,0);
+    glEnd();
+     glBegin(GL_QUADS);//ground
+    glColor3f(1,1,0);
+     glVertex3f(29,13,0.0);
+    glVertex3f(31.5,13,0.0);
+    glVertex3f(31.5,10,0);
+    glVertex3f(29,10,0);
+    glEnd();
 
 
     //last1
-    glBegin(GL_QUADS);
+    glBegin(GL_QUADS);//ground
     glColor3f(.5,.3,0);
-     glVertex3f(34,20.5,0.0);
-    glVertex3f(34,23.5,0.0);
+     glVertex3f(33.5,20.5,0.0);
+    glVertex3f(33.5,23.5,0.0);
     glVertex3f(35.5,23.5,0);
     glVertex3f(35.5,20.5,0);
     glEnd();
-    glBegin(GL_TRIANGLES);
+    glBegin(GL_QUADS);
     glColor3f(0.2,0,.8);
-     glVertex3f(34,23.5,0.0);
-    glVertex3f(34.75,25,0.0);
+     glVertex3f(33.5,23.5,0.0);
+    glVertex3f(33.5,24.25,0.0);
+    glVertex3f(35.5,24.25,0.0);
     glVertex3f(35.5,23.5,0);
     glEnd();
+    glBegin(GL_QUADS);//first floor
+    glColor3f(.5,.3,0);
+     glVertex3f(33.5,24.25,0.0);
+    glVertex3f(33.5,27,0.0);
+    glVertex3f(35.5,27,0);
+    glVertex3f(35.5,24.25,0);
+    glEnd();
     //last2
-    glBegin(GL_QUADS);
+    glBegin(GL_QUADS);//ground
     glColor3f(.8,.5,0.4);
     glVertex3f(36,20.5,0.0);
     glVertex3f(36,23.5,0.0);
     glVertex3f(37.5,23.5,0);
     glVertex3f(37.5,20.5,0);
     glEnd();
-    glBegin(GL_TRIANGLES);
+    glBegin(GL_QUADS);//roof
     glColor3f(1,0,0.5);
      glVertex3f(36,23.5,0.0);
-    glVertex3f(36.75,25,0.0);
+    glVertex3f(36,25,0.0);
+    glVertex3f(37.5,25,0);
     glVertex3f(37.5,23.5,0);
     glEnd();
 }
@@ -516,6 +571,11 @@ void grass()
     glVertex3f(37.25,1.75,0);
     glEnd();
 }
+void update(int value)
+{
+    glutPostRedisplay();
+    glutTimerFunc(25,update,0);
+}
 
 void init()
 {
@@ -534,21 +594,35 @@ void display()
     grass();
     houses();
     sky();
+    glPushMatrix();
+    glTranslatef(cloud_move,0,0);
     cloud();
+    glPopMatrix();
+    cloud_move+=0.1;
+    if(cloud_move>40)
+        cloud_move=-40;
+     glPushMatrix();
+    glTranslatef(cloud1_move,0,0);
     cloud1();
+    glPopMatrix();
+    cloud1_move+=0.1;
+    if(cloud1_move>40)
+        cloud1_move=-40;
     sun();
     man();
-    glFlush();
+    glutSwapBuffers();
 }
 
 int main(int argc,char** argv)
 {
     glutInit(&argc,argv);
-    glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
+    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB|GLUT_DEPTH);
     glutInitWindowPosition(10,10);
     glutInitWindowSize(1200,700);
     glutCreateWindow("TRAVELLING SALES MAN");
     init();
     glutDisplayFunc(display);
+    glutTimerFunc(25,update,0);
     glutMainLoop();
+    return 0;
 }
