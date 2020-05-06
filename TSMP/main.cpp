@@ -4,6 +4,9 @@
 #include<math.h>
 float cloud_move=0;
 float cloud1_move=0;
+float man_movey=0;
+float man_movex=0;
+int time=0;
 void roads()
 {
      glBegin(GL_LINES);
@@ -99,8 +102,6 @@ void surroundings()
 
 void man()
 {
-
-
     glBegin(GL_QUADS);//body
     glColor3f(1,.2,1);
     glVertex3f(8,12,0.0);
@@ -131,8 +132,39 @@ void man()
         glVertex2f(8.75+.5*cos(theta),16+0.5*sin(theta));
     }
     glEnd();
+}
+void man1()
+{
+    glBegin(GL_QUADS);//body
+    glColor3f(1,.2,1);
+    glVertex3f(15,30,0.0);
+    glVertex3f(15,33,0.0);
+    glVertex3f(16.5,33,0);
+    glVertex3f(16.5,30,0);
+    glEnd();
+    glBegin(GL_QUADS);//left leg
+    glColor3f(0,0,0);
+    glVertex3f(15.4,28,0.0);
+    glVertex3f(15.4,30,0.0);
+    glVertex3f(15.6,30,0);
+    glVertex3f(15.6,28,0);
+    glEnd();
+     glBegin(GL_QUADS);//right leg
+    glColor3f(0,0,0);
+    glVertex3f(15.9,28,0.0);
+    glVertex3f(15.9,30,0.0);
+    glVertex3f(16.1,30,0);
+    glVertex3f(16.1,28,0);
+    glEnd();
 
-
+    glBegin(GL_POLYGON);//head
+    glColor3f(0,0,0);
+    for(int i=0;i<360;i++)
+    {
+        float theta=i*3.142/180;
+        glVertex2f(15.75+.5*cos(theta),33.5+0.5*sin(theta));
+    }
+    glEnd();
 }
 void houses()
 {
@@ -573,6 +605,7 @@ void grass()
 }
 void update(int value)
 {
+    time+=1;
     glutPostRedisplay();
     glutTimerFunc(25,update,0);
 }
@@ -594,6 +627,8 @@ void display()
     grass();
     houses();
     sky();
+    sun();
+    //cloud to move
     glPushMatrix();
     glTranslatef(cloud_move,0,0);
     cloud();
@@ -608,8 +643,31 @@ void display()
     cloud1_move+=0.1;
     if(cloud1_move>40)
         cloud1_move=-40;
-    sun();
-    man();
+
+    //man movement
+    if(time<1000)
+    {
+        glPushMatrix();
+        glTranslatef(0,man_movey,0);
+        man();
+        glPopMatrix();
+        man_movey+=0.1;
+        if( man_movey>20)
+            man_movey=20;
+    }
+    else if (time>1000 && time<2000)
+    {
+        glPushMatrix();
+        glTranslatef(man_movex,0,0);
+        man1();
+        glPopMatrix();
+        man_movex+=0.1;
+        if( man_movex>20)
+            man_movex=20;
+    }
+
+
+
     glutSwapBuffers();
 }
 
