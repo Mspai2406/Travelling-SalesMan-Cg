@@ -2,11 +2,61 @@
 #define GLUT_DISABLE_ATEXIT_HACK
 #include<gl/glut.h>
 #include<math.h>
+#include<string.h>
 float cloud_move=0;
 float cloud1_move=0;
 float man_movey=0;
 float man_movex=0;
 int time=0;
+void writetext(char *text,int length,float x,float y)
+{
+    glRasterPos2f(x,y);
+    for(int i=0;i<length;i++)
+       glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,(int)text[i]);
+}
+void writetext1(char *text,int length,float x,float y)
+{
+    glRasterPos2f(x,y);
+    for(int i=0;i<length;i++)
+       glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,(int)text[i]);
+}
+void firstwindow()
+{
+    glBegin(GL_QUADS);
+    glColor3f(0.4,0.7,0.9);
+    glVertex3f(0,0,0);
+    glVertex3f(0,40,0);
+    glVertex3f(40,40,0);
+    glVertex3f(40,0,0);
+    glEnd();
+    glColor3f(0,0,0);
+     char college[]="SAHYADRI COLLEGE OF ENGINEERING AND MANAGEMENT";
+     writetext(college,strlen(college),10,38);
+     char dept[]="DEPARTENT OF COMPUTER SCIENCE AND ENGINEERING";
+     writetext(dept,strlen(dept),10,35);
+        char mini[]="A Mini Project on";
+     writetext(mini,strlen(mini),17,30);
+     glColor3f(1,0,.2);
+     char projname[]="\" A DELIVERY BOY \"";
+     writetext(projname,strlen(projname),16,27);
+     glColor3f(0,0,0);
+     char guide[]="Under the Guidance of";
+     writetext(guide,strlen(guide),16,22);
+     char sir[]="Mr.Manjunath S R";
+     writetext(sir,strlen(sir),16.8,20);
+     char des[]="Professor, Dept. of CSE";
+     writetext1(des,strlen(des),16.5,18);
+     char proj[]="The Project By";
+     writetext(proj,strlen(proj),17,13);
+     char kavya[]="1. KAVYA - 4SF17CS069";
+     writetext1(kavya,strlen(kavya),7,9);
+     char dep1[]="Computer Science and Engineering";
+     writetext1(dep1,strlen(dep1),7.4,7);
+     char krithi[]="2. KRITHI - 4SF7CS074";
+     writetext1(krithi,strlen(krithi),24,9);
+     writetext1(dep1,strlen(dep1),24.4,7);
+
+}
 void roads()
 {
      glBegin(GL_LINES);
@@ -16,8 +66,6 @@ void roads()
     glVertex3f(10,18,0);
     glVertex3f(10,20,0.0);//first-up
     glVertex3f(15,30,0);
-    //glVertex3f(11,19,0.0);//first-down
-    //glVertex3f(15,28,0);
     glVertex3f(15,30,0.0);//1 to 2
     glVertex3f(27,30,0);
     glVertex3f(27,30,0.0);//2 to 4
@@ -26,10 +74,6 @@ void roads()
     glVertex3f(27,10,0);
     glVertex3f(10,18,0.0);//start to 3
     glVertex3f(15,10,0);
-    //glVertex3f(11,19,0.0);//start to 3
-    //glVertex3f(15,12,0);
-    //glVertex3f(15,28,0.0);//1 to 3
-    //glVertex3f(15,12,0);
     glVertex3f(15,0,0.0);//3 to ground
     glVertex3f(15,10,0);
     glVertex3f(27,10,0.0);//4 to ground
@@ -50,7 +94,6 @@ void surroundings()
     glVertex3f(15,28,0.0);//triangle 1
     glVertex3f(11,19,0.0);
     glVertex3f(15,12,0);
-
     glEnd();
     glBegin(GL_QUADS);
     glColor3f(0,.8,.3);//bottom square
@@ -80,9 +123,6 @@ void surroundings()
     glVertex3f(10,18,0.0);//bottom left
     glVertex3f(15,10,0);
     glVertex3f(15,0,0);
-
-
-
     glEnd();
 
     glBegin(GL_POLYGON);
@@ -91,10 +131,7 @@ void surroundings()
     glVertex3f(0,35,0.0);
     glVertex3f(15,35,0.0);
     glVertex3f(15,30,0);
-    //glVertex3f(15,30,0);
     glVertex3f(10,20,0);
-
-
     glEnd();
 
 }
@@ -282,8 +319,6 @@ void houses()
     glVertex3f(31.5,10,0);
     glVertex3f(29,10,0);
     glEnd();
-
-
     //last1
     glBegin(GL_QUADS);//ground
     glColor3f(.5,.3,0);
@@ -321,6 +356,70 @@ void houses()
     glVertex3f(37.5,25,0);
     glVertex3f(37.5,23.5,0);
     glEnd();
+
+}
+void circle(float x,float y,float radius)
+{
+    glBegin(GL_POLYGON);
+    glColor3f(1,1,1);
+    for(int i=0;i<360;i++)
+    {
+        float theta=i*3.142/180;
+        glVertex2f(x+radius*cos(theta),y+radius*sin(theta));
+    }
+    glEnd();
+}
+void order()
+{
+    glBegin(GL_QUADS);//message 1 from node 1
+    glVertex3f(5,34.6,0);
+    glVertex3f(5,37,0);
+    glVertex3f(10,37,0);
+    glVertex3f(10,34.6,0);
+    glEnd();
+    glColor3f(0,0,0);
+    char pizza[]="Order:pizza";
+    writetext1(pizza,strlen(pizza),5.5,35.5);
+    circle(9,34,0.3);
+    circle(9.6,33.5,0.2);
+
+    glBegin(GL_QUADS);//message 2 from node 2
+    glVertex3f(25,32,0);
+    glVertex3f(25,33,0);
+    glVertex3f(27,33,0);
+    glVertex3f(27,32,0);
+    glEnd();
+     glColor3f(0,0,0);
+    char dot[]="...";
+    writetext1(dot,strlen(dot),25.8,32.5);
+    circle(26.6,31.4,0.3);
+    circle(27,30.8,0.2);
+
+    glBegin(GL_QUADS);//message 3 from node 3
+    glVertex3f(10,12,0);
+    glVertex3f(10,13,0);
+    glVertex3f(12,13,0);
+    glVertex3f(12,12,0);
+    glEnd();
+     glColor3f(0,0,0);
+    writetext1(dot,strlen(dot),10.8,12.5);
+    circle(11.4,11.6,0.3);
+    circle(11.7,11.1,0.2);
+
+
+    glBegin(GL_QUADS);//message 4 from node 4
+    glVertex3f(31,15.5,0);
+    glVertex3f(31,17,0);
+    glVertex3f(32.5,17,0);
+    glVertex3f(32.5,15.5,0);
+    glEnd();
+     glColor3f(0,0,0);
+    writetext1(dot,strlen(dot),31.5,16.3);
+    circle(31.9,15.1,0.3);
+    circle(31.4,14.3,0.2);
+
+
+
 }
 void sky()
 {
@@ -432,17 +531,7 @@ void whiteroadmarks()
      glEnd();
 
 }
-void circle(float x,float y,float radius)
-{
-    glBegin(GL_POLYGON);
-    glColor3f(1,1,1);
-    for(int i=0;i<360;i++)
-    {
-        float theta=i*3.142/180;
-        glVertex2f(x+radius*cos(theta),y+radius*sin(theta));
-    }
-    glEnd();
-}
+
 void cloud()
 {
     circle(10,37,1);
@@ -603,6 +692,24 @@ void grass()
     glVertex3f(37.25,1.75,0);
     glEnd();
 }
+void explainationwindow()
+{
+    glColor3f(1,1,1);
+    glBegin(GL_QUADS);
+    glVertex3f(2,2,0.0);
+    glVertex3f(2,38,0);
+    glVertex3f(38,38,0);
+    glVertex3f(38,2,0.0);
+    glEnd();
+    glColor3f(.3,0,1);
+    char order1[]="The restuarant has received four orders at a time.";
+    writetext1(order1,strlen(order1),4,36);
+    char order2[]="Now the delivery boy has to deliver to these places. He has to find the shortest possible route that visits every house";
+    char order3[]=" exactly once and returns to the starting point.";
+    writetext1(order2,strlen(order2),4,34);
+    writetext1(order3,strlen(order3),4,32);
+
+}
 void update(int value)
 {
     time+=1;
@@ -645,25 +752,36 @@ void display()
         cloud1_move=-40;
 
     //man movement
-    if(time<1000)
+    if(time<300)
     {
-        glPushMatrix();
+        firstwindow();
+        /*glPushMatrix();
         glTranslatef(0,man_movey,0);
         man();
         glPopMatrix();
         man_movey+=0.1;
         if( man_movey>20)
-            man_movey=20;
+            man_movey=20;*/
     }
-    else if (time>1000 && time<2000)
+    else if (time>300 && time<600)
     {
-        glPushMatrix();
+        man();
+        /*glPushMatrix();
         glTranslatef(man_movex,0,0);
         man1();
         glPopMatrix();
         man_movex+=0.1;
         if( man_movex>20)
-            man_movex=20;
+            man_movex=20;*/
+    }
+    else if (time>600 && time<800)
+    {
+        order();
+        man();
+    }
+    else if(time>=800 && time<1500)
+    {
+        explainationwindow();
     }
 
 
