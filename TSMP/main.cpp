@@ -546,7 +546,7 @@ void cloud1()
     circle(32.5,38,1);
     circle(31.5,37,1);
 }
-sun()
+void sun()
 {
     glBegin(GL_POLYGON);
     glColor3f(1,.5,0);
@@ -692,6 +692,37 @@ void grass()
     glVertex3f(37.25,1.75,0);
     glEnd();
 }
+void graph()
+{
+    glColor3f(0,0,0);
+    glBegin(GL_LINES);
+    glLineWidth(10);
+    glVertex3f(18,15,0);
+    glVertex3f(22,19,0);
+    glVertex3f(22,19,0);
+    glVertex3f(26,19,0);
+    glVertex3f(26,19,0);
+    glVertex3f(26,11,0);
+    glVertex3f(26,11,0);
+    glVertex3f(22,11,0);
+    glVertex3f(22,11,0);
+    glVertex3f(18,15,0);
+    glVertex3f(22,19,0);
+    glVertex3f(22,11,0);
+    glEnd();
+    glColor3f(0,0,1);
+    char t[]="S";
+    writetext(t,1,17.5,15);
+    char s1[]="A";
+    writetext(s1,1,22,20.2);
+    char s2[]="B";
+    writetext(s2,1,26,20.2);
+    char s3[]="C";
+    writetext(s3,1,22,9.3);
+    char s4[]="D";
+    writetext(s4,1,26,9.3);
+
+}
 void explainationwindow()
 {
     glColor3f(1,1,1);
@@ -701,15 +732,20 @@ void explainationwindow()
     glVertex3f(38,38,0);
     glVertex3f(38,2,0.0);
     glEnd();
-    glColor3f(.3,0,1);
+    glColor3f(0,0,0);
     char order1[]="The restuarant has received four orders at a time.";
     writetext1(order1,strlen(order1),4,36);
     char order2[]="Now the delivery boy has to deliver to these places. He has to find the shortest possible route that visits every house";
     char order3[]=" exactly once and returns to the starting point.";
     writetext1(order2,strlen(order2),4,34);
     writetext1(order3,strlen(order3),4,32);
-
+    char gra[]="He makes a graph and calculates shortest distance";
+    writetext1(gra,strlen(gra),4,29);
+    man();
+    graph();
 }
+
+
 void update(int value)
 {
     time+=1;
