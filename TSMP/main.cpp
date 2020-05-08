@@ -361,7 +361,7 @@ void houses()
 void circle(float x,float y,float radius)
 {
     glBegin(GL_POLYGON);
-    glColor3f(1,1,1);
+   // glColor3f(1,1,1);
     for(int i=0;i<360;i++)
     {
         float theta=i*3.142/180;
@@ -380,6 +380,7 @@ void order()
     glColor3f(0,0,0);
     char pizza[]="Order:pizza";
     writetext1(pizza,strlen(pizza),5.5,35.5);
+    glColor3f(1,1,1);
     circle(9,34,0.3);
     circle(9.6,33.5,0.2);
 
@@ -392,6 +393,7 @@ void order()
      glColor3f(0,0,0);
     char dot[]="...";
     writetext1(dot,strlen(dot),25.8,32.5);
+    glColor3f(1,1,1);
     circle(26.6,31.4,0.3);
     circle(27,30.8,0.2);
 
@@ -403,6 +405,7 @@ void order()
     glEnd();
      glColor3f(0,0,0);
     writetext1(dot,strlen(dot),10.8,12.5);
+    glColor3f(1,1,1);
     circle(11.4,11.6,0.3);
     circle(11.7,11.1,0.2);
 
@@ -415,6 +418,7 @@ void order()
     glEnd();
      glColor3f(0,0,0);
     writetext1(dot,strlen(dot),31.5,16.3);
+    glColor3f(1,1,1);
     circle(31.9,15.1,0.3);
     circle(31.4,14.3,0.2);
 
@@ -534,6 +538,7 @@ void whiteroadmarks()
 
 void cloud()
 {
+    glColor3f(1,1,1);
     circle(10,37,1);
     circle(11,38,.75);
     circle(12.25,38,1);
@@ -541,6 +546,7 @@ void cloud()
 }
 void cloud1()
 {
+    glColor3f(1,1,1);
     circle(30,37,0.75);
     circle(31,38,1);
     circle(32.5,38,1);
@@ -559,138 +565,62 @@ void sun()
 }
 void grass()
 {
-    glBegin(GL_TRIANGLES);
-    glColor3f(0.5,.9,.2);
-    glVertex3f(0,0,0);//plant 1
-    glVertex3f(1,1.5,0.0);
-    glVertex3f(2,0,0);
-    glVertex3f(0,0.75,0);//plant 1
-    glVertex3f(1,2.25,0.0);
-    glVertex3f(2,0.75,0);
-    glVertex3f(0,1.75,0);//plant 1
-    glVertex3f(1,3.0,0.0);
-    glVertex3f(2,1.75,0);
 
-    glVertex3f(2.25,0,0);//plant 2
-    glVertex3f(3.25,1.5,0.0);
-    glVertex3f(4.25,0,0);
-    glVertex3f(2.25,0.75,0);//plant 2
-    glVertex3f(3.25,2.25,0.0);
-    glVertex3f(4.25,0.75,0);
+    glColor3f(0.2,1,.3);//plant 1
+    circle(1,1,1.5);
+    circle(3.5,1,1.5);
+    circle(2,3,1.5);
+    circle(7,1,1.5);//plant 2
+    circle(9.5,1,1.5);
+    circle(8.5,3,1.5);
+    circle(12.5,1,1);
+    circle(13.5,1,1);
+    circle(13,2.3,1);
 
-    glVertex3f(4,0,0);//plant 3
-    glVertex3f(5,1.5,0.0);
-    glVertex3f(6,0,0);
-    glVertex3f(4,0.75,0);//plant 3
-    glVertex3f(5,2.5,0.0);
-    glVertex3f(6,0.75,0);
-    glVertex3f(4,1.75,0);//plant 3
-    glVertex3f(5,3.0,0.0);
-    glVertex3f(6,1.75,0);
-    glVertex3f(4,2.5,0);//plant 3
-    glVertex3f(5,3.5,0.0);
-    glVertex3f(6,2.55,0);
+    circle(18,1,1);
+    circle(19,1,1);
+    circle(18.5,2.3,1);
+     circle(21.6,1,1.2);
+    circle(24,1,1.2);
+    circle(22.7,3,1.5);
 
-    glVertex3f(6.25,0,0);//plant 4
-    glVertex3f(7.25,1.5,0.0);
-    glVertex3f(8.25,0,0);
-    glVertex3f(6.25,0.75,0);//plant 4
-    glVertex3f(7.25,2.5,0.0);
-    glVertex3f(8.25,0.75,0);
-    glVertex3f(6.25,1.75,0);//plant 4
-    glVertex3f(7.25,3.0,0.0);
-    glVertex3f(8.25,1.75,0);
+     circle(28,1,1);
+    circle(29,1,1);
+    circle(28.5,2.3,1);
+    circle(32,1,1.2);
+    circle(34,1,1.2);
+    circle(33,3,1.5);
+    circle(37,1,1);
+    circle(38,1,1);
+    circle(37.5,2.3,1);
 
+    //flowers
+    glColor3f(1,0,0);
+    circle(1.2,1,.2);
+    circle(3.5,1,0.2);
+    circle(2,3,0.2);
+    circle(7,1,.2);//plant 2
+    circle(9.5,1,0.2);
+    circle(8.5,3,0.2);
+    circle(12.5,1,0.2);
+    circle(13.5,1,0.2);
+    circle(13,2.3,.2);
+    circle(18,1,0.2);
+    circle(19,1,0.2);
+    circle(18.5,2.3,0.2);
+     circle(21.6,1,0.2);
+    circle(24,1,0.2);
+    circle(22.7,3,0.2);
 
-    glVertex3f(8.5,0,0);//plant 5
-    glVertex3f(9.5,1.5,0.0);
-    glVertex3f(10.25,0,0);
-    glVertex3f(8.5,0.75,0);//plant 5
-    glVertex3f(9.5,2.5,0.0);
-    glVertex3f(10.5,0.75,0);
-    glVertex3f(8.5,1.75,0);//plant 5
-    glVertex3f(9.5,3.0,0.0);
-    glVertex3f(10.5,1.75,0);
-
-     glVertex3f(11,0,0);//plant 6
-    glVertex3f(12,1.5,0.0);
-    glVertex3f(13,0,0);
-    glVertex3f(11,0.75,0);//plant 6
-    glVertex3f(12,2.25,0.0);
-    glVertex3f(13,0.75,0);
-
-    glVertex3f(16.5,0,0);//plant 7
-    glVertex3f(17.5,1.5,0.0);
-    glVertex3f(18.5,0,0);
-    glVertex3f(16.5,0.75,0);//plant 7
-    glVertex3f(17.5,2.5,0.0);
-    glVertex3f(18.5,0.75,0);
-    glVertex3f(16.5,1.75,0);//plant 7
-    glVertex3f(17.5,3.0,0.0);
-    glVertex3f(18.5,1.75,0);
-    glVertex3f(16.5,2.5,0);//plant 7
-    glVertex3f(17.5,3.5,0.0);
-    glVertex3f(18.5,2.55,0);
-
-     glVertex3f(19,0,0);//plant 8
-    glVertex3f(20,1.5,0.0);
-    glVertex3f(21,0,0);
-    glVertex3f(19,0.75,0);//plant 8
-    glVertex3f(20,2.25,0.0);
-    glVertex3f(21,0.75,0);
-
-    glVertex3f(22,0,0);//plant 9
-    glVertex3f(23,1.5,0.0);
-    glVertex3f(24,0,0);
-    glVertex3f(22,0.75,0);//plant 9
-    glVertex3f(23,2.5,0.0);
-    glVertex3f(24,0.75,0);
-    glVertex3f(22,1.75,0);//plant 9
-    glVertex3f(23,3.0,0.0);
-    glVertex3f(24,1.75,0);
-    glVertex3f(22,2.5,0);//plant 9
-    glVertex3f(23,3.5,0.0);
-    glVertex3f(24,2.55,0);
-    glVertex3f(27,0,0);//plant 1
-    glVertex3f(28,1.5,0.0);
-    glVertex3f(29,0,0);
-    glVertex3f(27,0.75,0);//plant 1
-    glVertex3f(28,2.25,0.0);
-    glVertex3f(29,0.75,0);
-    glVertex3f(27,1.75,0);//plant 1
-    glVertex3f(28,3.0,0.0);
-    glVertex3f(29,1.75,0);
-
-    glVertex3f(29.25,0,0);//plant 2
-    glVertex3f(30.25,1.5,0.0);
-    glVertex3f(31.25,0,0);
-    glVertex3f(29.25,0.75,0);//plant 2
-    glVertex3f(30.25,2.25,0.0);
-    glVertex3f(31.25,0.75,0);
-
-    glVertex3f(32,0,0);//plant 3
-    glVertex3f(33,1.5,0.0);
-    glVertex3f(34,0,0);
-    glVertex3f(32,0.75,0);//plant 3
-    glVertex3f(33,2.5,0.0);
-    glVertex3f(34,0.75,0);
-    glVertex3f(32,1.75,0);//plant 3
-    glVertex3f(33,3.0,0.0);
-    glVertex3f(34,1.75,0);
-    glVertex3f(32,2.5,0);//plant 3
-    glVertex3f(33,3.5,0.0);
-    glVertex3f(34,2.55,0);
-
-    glVertex3f(35.25,0,0);//plant 4
-    glVertex3f(36.25,1.5,0.0);
-    glVertex3f(37.25,0,0);
-    glVertex3f(35.25,0.75,0);//plant 4
-    glVertex3f(36.25,2.5,0.0);
-    glVertex3f(37.25,0.75,0);
-    glVertex3f(35.25,1.75,0);//plant 4
-    glVertex3f(36.25,3.0,0.0);
-    glVertex3f(37.25,1.75,0);
-    glEnd();
+     circle(28,1,0.2);
+    circle(29,1,0.2);
+    circle(28.5,2.3,0.2);
+    circle(32,1,0.2);
+    circle(34,1,0.2);
+    circle(33,3,0.2);
+    circle(37,1,0.2);
+    circle(38,1,0.2);
+    circle(37.5,2.3,0.2);
 }
 void graph()
 {
@@ -709,6 +639,8 @@ void graph()
     glVertex3f(18,15,0);
     glVertex3f(22,19,0);
     glVertex3f(22,11,0);
+    glVertex3f(26,19,0);
+    glVertex3f(22,11,0);
     glEnd();
     glColor3f(0,0,1);
     char t[]="S";
@@ -721,6 +653,21 @@ void graph()
     writetext(s3,1,22,9.3);
     char s4[]="D";
     writetext(s4,1,26,9.3);
+    glColor3f(0,0,0);
+    char d[]="10";
+    writetext1(d,2,19,17);
+    char d1[]="12";
+    writetext1(d1,2,24,20);
+    char d2[]="8";
+    writetext1(d2,1,27,15);
+    char d3[]="5";
+    writetext1(d3,1,24,10);
+    char d4[]="15";
+    writetext1(d4,2,19,12);
+    char d5[]="20";
+    writetext1(d5,2,21,14);
+    char d6[]="25";
+    writetext1(d6,2,24,14);
 
 }
 void explainationwindow()
