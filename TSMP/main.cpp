@@ -5,8 +5,8 @@
 #include<string.h>
 float cloud_move=0;
 float cloud1_move=0;
-float man_movey=0;
-float man_movex=0;
+float man_movey=0,man2_movey=0,man4_movey=0;
+float man_movex=0,man1_movex=0,man3_movex=0,man4_movex=0;
 int time=0;
 void writetext(char *text,int length,float x,float y)
 {
@@ -37,7 +37,7 @@ void firstwindow()
         char mini[]="A Mini Project on";
      writetext(mini,strlen(mini),17,30);
      glColor3f(1,0,.2);
-     char projname[]="\" A DELIVERY BOY \"";
+     char projname[]="\" THE ROAD WARRIOR \"";
      writetext(projname,strlen(projname),16,27);
      glColor3f(0,0,0);
      char guide[]="Under the Guidance of";
@@ -52,7 +52,7 @@ void firstwindow()
      writetext1(kavya,strlen(kavya),7,9);
      char dep1[]="Computer Science and Engineering";
      writetext1(dep1,strlen(dep1),7.4,7);
-     char krithi[]="2. KRITHI - 4SF7CS074";
+     char krithi[]="2. KRITHI - 4SF17CS074";
      writetext1(krithi,strlen(krithi),24,9);
      writetext1(dep1,strlen(dep1),24.4,7);
 
@@ -136,8 +136,17 @@ void surroundings()
 
 }
 
-
-void man()
+void circle(float x,float y,float radius)
+{
+    glBegin(GL_POLYGON);
+    for(int i=0;i<360;i++)
+    {
+        float theta=i*3.142/180;
+        glVertex2f(x+radius*cos(theta),y+radius*sin(theta));
+    }
+    glEnd();
+}
+void man()                          //Man at the beginning
 {
     glBegin(GL_QUADS);//body
     glColor3f(1,.2,1);
@@ -160,48 +169,139 @@ void man()
     glVertex3f(9.1,12,0);
     glVertex3f(9.1,10,0);
     glEnd();
-
-    glBegin(GL_POLYGON);//head
     glColor3f(0,0,0);
-    for(int i=0;i<360;i++)
-    {
-        float theta=i*3.142/180;
-        glVertex2f(8.75+.5*cos(theta),16+0.5*sin(theta));
-    }
-    glEnd();
+    circle(8.75,16,0.5);
+
 }
-void man1()
+void man1()                                     //man at node A
 {
     glBegin(GL_QUADS);//body
     glColor3f(1,.2,1);
-    glVertex3f(15,30,0.0);
-    glVertex3f(15,33,0.0);
-    glVertex3f(16.5,33,0);
-    glVertex3f(16.5,30,0);
+    glVertex3f(14.5,32,0.0);
+    glVertex3f(14.5,35.5,0.0);
+    glVertex3f(16,35.5,0);
+    glVertex3f(16,32,0);
     glEnd();
     glBegin(GL_QUADS);//left leg
     glColor3f(0,0,0);
-    glVertex3f(15.4,28,0.0);
-    glVertex3f(15.4,30,0.0);
-    glVertex3f(15.6,30,0);
-    glVertex3f(15.6,28,0);
+    glVertex3f(14.9,30,0.0);
+    glVertex3f(14.9,32,0.0);
+    glVertex3f(15.1,32,0);
+    glVertex3f(15.1,30,0);
     glEnd();
      glBegin(GL_QUADS);//right leg
     glColor3f(0,0,0);
-    glVertex3f(15.9,28,0.0);
-    glVertex3f(15.9,30,0.0);
-    glVertex3f(16.1,30,0);
-    glVertex3f(16.1,28,0);
+    glVertex3f(15.4,30,0.0);
+    glVertex3f(15.4,32,0.0);
+    glVertex3f(15.6,32,0);
+    glVertex3f(15.6,30,0);
     glEnd();
-
-    glBegin(GL_POLYGON);//head
     glColor3f(0,0,0);
-    for(int i=0;i<360;i++)
-    {
-        float theta=i*3.142/180;
-        glVertex2f(15.75+.5*cos(theta),33.5+0.5*sin(theta));
-    }
+    circle(15.25,36,.5);
+}
+void man2()                                 //man at node B
+{
+    glBegin(GL_QUADS);//body
+    glColor3f(1,.2,1);
+    glVertex3f(25.5,32,0.0);
+    glVertex3f(25.5,35.5,0.0);
+    glVertex3f(27,35.5,0);
+    glVertex3f(27,32,0);
     glEnd();
+    glBegin(GL_QUADS);//left leg
+    glColor3f(0,0,0);
+    glVertex3f(25.9,30,0.0);
+    glVertex3f(25.9,32,0.0);
+    glVertex3f(26.1,32,0);
+    glVertex3f(26.1,30,0);
+    glEnd();
+     glBegin(GL_QUADS);//right leg
+    glColor3f(0,0,0);
+    glVertex3f(26.4,30,0.0);
+    glVertex3f(26.4,32,0.0);
+    glVertex3f(26.6,32,0);
+    glVertex3f(26.6,30,0);
+    glEnd();
+    glColor3f(0,0,0);
+    circle(26.25,36,.5);
+}
+void man3()                         //man at node D
+{
+    glBegin(GL_QUADS);//body
+    glColor3f(1,.2,1);
+    glVertex3f(25,14,0.0);
+    glVertex3f(25,17.5,0.0);
+    glVertex3f(26.5,17.5,0);
+    glVertex3f(26.5,14,0);
+    glEnd();
+    glBegin(GL_QUADS);//left leg
+    glColor3f(0,0,0);
+    glVertex3f(25.4,12,0.0);
+    glVertex3f(25.4,14,0.0);
+    glVertex3f(25.6,14,0);
+    glVertex3f(25.6,12,0);
+    glEnd();
+     glBegin(GL_QUADS);//right leg
+    glColor3f(0,0,0);
+    glVertex3f(25.9,12,0.0);
+    glVertex3f(25.9,14,0.0);
+    glVertex3f(26.1,14,0);
+    glVertex3f(26.1,12,0);
+    glEnd();
+    glColor3f(0,0,0);
+    circle(25.75,18,.5);
+}
+void man5()                         //man at source
+{
+    glBegin(GL_QUADS);//body
+    glColor3f(1,.2,1);
+    glVertex3f(10.5,22,0.0);
+    glVertex3f(10.5,25.5,0.0);
+    glVertex3f(12,25.5,0);
+    glVertex3f(12,22,0);
+    glEnd();
+    glBegin(GL_QUADS);//left leg
+    glColor3f(0,0,0);
+    glVertex3f(10.9,20,0.0);
+    glVertex3f(10.9,22,0.0);
+    glVertex3f(11.1,22,0);
+    glVertex3f(11.1,20,0);
+    glEnd();
+     glBegin(GL_QUADS);//right leg
+    glColor3f(0,0,0);
+    glVertex3f(11.4,20,0.0);
+    glVertex3f(11.4,22,0.0);
+    glVertex3f(11.6,22,0);
+    glVertex3f(11.6,20,0);
+    glEnd();
+    glColor3f(0,0,0);
+    circle(11.25,26,.5);
+}
+void man4()                         //man at node C
+{
+    glBegin(GL_QUADS);//body
+    glColor3f(1,.2,1);
+    glVertex3f(13,14,0.0);
+    glVertex3f(13,17.5,0.0);
+    glVertex3f(14.5,17.5,0);
+    glVertex3f(14.5,14,0);
+    glEnd();
+    glBegin(GL_QUADS);//left leg
+    glColor3f(0,0,0);
+    glVertex3f(13.4,12,0.0);
+    glVertex3f(13.4,14,0.0);
+    glVertex3f(13.6,14,0);
+    glVertex3f(13.6,12,0);
+    glEnd();
+     glBegin(GL_QUADS);//right leg
+    glColor3f(0,0,0);
+    glVertex3f(13.9,12,0.0);
+    glVertex3f(13.9,14,0.0);
+    glVertex3f(14.1,14,0);
+    glVertex3f(14.1,12,0);
+    glEnd();
+    glColor3f(0,0,0);
+    circle(13.75,18,.5);
 }
 void houses()
 {
@@ -358,17 +458,7 @@ void houses()
     glEnd();
 
 }
-void circle(float x,float y,float radius)
-{
-    glBegin(GL_POLYGON);
-   // glColor3f(1,1,1);
-    for(int i=0;i<360;i++)
-    {
-        float theta=i*3.142/180;
-        glVertex2f(x+radius*cos(theta),y+radius*sin(theta));
-    }
-    glEnd();
-}
+
 void order()
 {
     glBegin(GL_QUADS);//message 1 from node 1
@@ -690,12 +780,156 @@ void explainationwindow()
     writetext1(gra,strlen(gra),4,29);
     man();
     graph();
+    char dist[]="He starts from S then goes to A. Because distance to A is less than B.";
+    writetext1(dist,strlen(dist),4,27);
+    char dist1[]="Thus he moves from S to A, then to B, D, C then returns to source.";
+    writetext1(dist1,strlen(dist1),4,25);
+    char dist2[]="Thus total minimum distance is: 10 + 12 + 8 + 5 + 15 = 50";
+    writetext1(dist2,strlen(dist2),4,23);
 }
+void sourcetoA()
+{
+    glPushMatrix();
+        glTranslatef(man_movex,man_movey,0);
+        man();
+        glPopMatrix();
+        man_movey+=0.1;
+        man_movex+=0.03;
+        if( man_movey>8 && man_movex>6.5)
+        {
+            man_movey=20;
+            man_movex=6.5;
+        }
+}
+void fromAtoB()
+{
+     glPushMatrix();
+        glTranslatef(man1_movex,0,0);
+        man1();
+        glPopMatrix();
+        man1_movex+=0.05;
+        if( man1_movex>11)
+            man1_movex=11;
+}
+void fromBtoD()
+{
+    glPushMatrix();
+        glTranslatef(0,man2_movey,0);
+        man2();
+        glPopMatrix();
+        man2_movey-=0.05;
+        if( man2_movey<-20)
+            man2_movey=-20;
+
+}
+void fromDtoC()
+{
+    glPushMatrix();
+        glTranslatef(man3_movex,0,0);
+        man3();
+        glPopMatrix();
+        man3_movex-=0.05;
+        if( man3_movex<-12)
+            man3_movex=-12;
+
+}
+void Dtosource()
+{
+    glPushMatrix();
+        glTranslatef(man4_movex,man4_movey,0);
+        man4();
+        glPopMatrix();
+        man4_movey+=0.1;
+        man4_movex-=0.03;
+        if( man4_movey>8 && man4_movex<-2.7)
+        {
+            man4_movey=8;
+            man4_movex=-2.7;
+        }
+}
+void message1()                         //message a node A
+{
+   glBegin(GL_QUADS);//message 1 from node 1
+    glVertex3f(4,34,0);
+    glVertex3f(4,37,0);
+    glVertex3f(10,37,0);
+    glVertex3f(10,34,0);
+    glEnd();
+    glColor3f(0,0,0);
+    char reach1[]="Reached A";
+    writetext1(reach1,strlen(reach1),4.5,36);
+    char go1[]="Now goes to B";
+    writetext1(go1,strlen(go1),4.5,34.8);
+}
+void message2()                         //message at node B
+{
+  glBegin(GL_QUADS);
+  glColor3f(1,1,1);
+    glVertex3f(28,34,0);
+    glVertex3f(28,37,0);
+    glVertex3f(34,37,0);
+    glVertex3f(34,34,0);
+    glEnd();
+    glColor3f(0,0,0);
+    char reach2[]="Reached B";
+    writetext1(reach2,strlen(reach2),28.5,36);
+    char go2[]="Now goes to D";
+    writetext1(go2,strlen(go2),28.5,34.8);
+}
+void message3()                 //message at node D
+{
+  glBegin(GL_QUADS);
+  glColor3f(1,1,1);
+    glVertex3f(28,15,0);
+    glVertex3f(28,19,0);
+    glVertex3f(34,19,0);
+    glVertex3f(34,15,0);
+    glEnd();
+    glColor3f(0,0,0);
+    char reach3[]="Reached D";
+    writetext1(reach3,strlen(reach3),28.5,18);
+    char go3[]="Now goes to C";
+    writetext1(go3,strlen(go3),28.5,17);
+}
+void message4()       //message at node c
+{
+  glBegin(GL_QUADS);
+  glColor3f(1,1,1);
+    glVertex3f(6,12,0);
+    glVertex3f(6,15,0);
+    glVertex3f(12,15,0);
+    glVertex3f(12,12,0);
+    glEnd();
+    glColor3f(0,0,0);
+    char reach4[]="Visited all houses";
+    writetext1(reach4,strlen(reach4),6.5,14);
+    char go4[]="Returns to source";
+    writetext1(go4,strlen(go4),6.5,13);
+}
+void message5()
+{
+  glBegin(GL_QUADS);
+  glColor3f(1,1,1);
+    glVertex3f(6,26,0);
+    glVertex3f(6,28,0);
+    glVertex3f(10,28,0);
+    glVertex3f(10,26,0);
+    glEnd();
+    glColor3f(0,0,0);
+    char finish[]="Finished !!";
+    writetext1(finish,strlen(finish),6.5,27);
+}
+
 
 
 void update(int value)
 {
     time+=1;
+    if(time>=1800 && time<1900)
+    {
+        man_movex=0;
+        man_movey=0;
+    }
     glutPostRedisplay();
     glutTimerFunc(25,update,0);
 }
@@ -738,24 +972,11 @@ void display()
     if(time<300)
     {
         firstwindow();
-        /*glPushMatrix();
-        glTranslatef(0,man_movey,0);
-        man();
-        glPopMatrix();
-        man_movey+=0.1;
-        if( man_movey>20)
-            man_movey=20;*/
     }
     else if (time>300 && time<600)
     {
         man();
-        /*glPushMatrix();
-        glTranslatef(man_movex,0,0);
-        man1();
-        glPopMatrix();
-        man_movex+=0.1;
-        if( man_movex>20)
-            man_movex=20;*/
+
     }
     else if (time>600 && time<800)
     {
@@ -766,8 +987,53 @@ void display()
     {
         explainationwindow();
     }
-
-
+    else if(time>=1500 && time<1800)
+    {
+       sourcetoA();
+    }
+    else if(time>=1800 && time<1900)
+    {
+        message1();
+        man1();
+    }
+    else if(time>=1900 && time<2200)
+    {
+        fromAtoB();
+    }
+    else if(time>=2200 && time<2400)
+    {
+        man2();
+        message2();
+    }
+    else if(time>=2400 && time<2800)
+    {
+        fromBtoD();
+    }
+    else if(time>=2800 && time<2900)
+    {
+        man3();
+        message3();
+    }
+    else if(time>=2900 && time<3300)
+    {
+        fromDtoC();
+    }
+    else if(time>=3300 && time<3400)
+    {
+        message4();
+        man4();
+    }
+    else if(time>=3400 && time<3700)
+    {
+        Dtosource();
+    }
+    else if(time>=3800 && time<3900)
+    {
+        message5();
+        man5();
+    }
+    else
+        man5();
 
     glutSwapBuffers();
 }
@@ -778,7 +1044,7 @@ int main(int argc,char** argv)
     glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB|GLUT_DEPTH);
     glutInitWindowPosition(10,10);
     glutInitWindowSize(1200,700);
-    glutCreateWindow("TRAVELLING SALES MAN");
+    glutCreateWindow("THE ROAD WARRIOR");
     init();
     glutDisplayFunc(display);
     glutTimerFunc(25,update,0);
