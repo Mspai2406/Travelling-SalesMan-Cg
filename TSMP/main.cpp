@@ -3,8 +3,10 @@
 #include<gl/glut.h>
 #include<math.h>
 #include<string.h>
+#include<mmsystem.h>
 float cloud_move=0;
 float cloud1_move=0;
+float x=0,y=0;
 float man_movey=0,man2_movey=0,man4_movey=0;
 float man_movex=0,man1_movex=0,man3_movex=0,man4_movex=0;
 int time=0;
@@ -56,6 +58,34 @@ void firstwindow()
      writetext1(krithi,strlen(krithi),24,9);
      writetext1(dep1,strlen(dep1),24.4,7);
 
+}
+void introduction()
+{
+
+    glBegin(GL_QUADS);
+    glColor3f(1,1,0.5);
+    glVertex3f(0,0,0);
+    glVertex3f(0,40,0);
+    glVertex3f(40,40,0);
+    glVertex3f(40,0,0);
+    glEnd();
+    glColor3f(0,0,0);
+    glBegin(GL_LINES);
+    glVertex3f(16.5,32.5,0);
+    glVertex3f(24,32.5,0);
+    //glVertex3f(21,18.5,0);
+    //glVertex3f(25,18.5,0);
+    glEnd();
+    char roadwarrior[]="ROAD WARRIOR";
+    writetext(roadwarrior,strlen(roadwarrior),17,33);
+    char intro[]="A Road Warrior is a person who travels frequently as part of their job and does much work while travelling.";
+    writetext1(intro,strlen(intro),6,25);
+    char intro1[]="The term has often been used with regard to delivery boy who travel often. while travelling, he uses Dijikstra's algorithm.";
+    writetext1(intro1,strlen(intro1),6,22);
+    char intro2[]="Here the person fight against the time. Hence the name ROAD WARRIOR.";
+    writetext1(intro2,strlen(intro2),6,19);
+    char intro3[]="It is used by anyone who works outside and travels for business";
+    writetext1(intro3,strlen(intro3),6,16);
 }
 void roads()
 {
@@ -529,9 +559,9 @@ void sky()
 void whiteroadmarks()
 {
      //roads white line
+     glLineWidth(4);
     glBegin(GL_LINES);
     glColor3f(1,1,1);
-    //glLineWidth(100);
     glVertex3f(0,19,0.0);//starting
     glVertex3f(2,19,0);
     glVertex3f(3,19,0.0);//
@@ -919,6 +949,52 @@ void message5()
     char finish[]="Finished !!";
     writetext1(finish,strlen(finish),6.5,27);
 }
+void path1()
+{
+    glLineWidth(10);
+    glBegin(GL_LINES);
+    glColor3f(1,0,0);
+    glVertex3f(9.8,20,0);
+    glVertex3f(14.8,30.2,0);
+    glEnd();
+}
+void path2()
+{
+    glLineWidth(10);
+    glBegin(GL_LINES);
+    glColor3f(0.5,0.5,1);
+    glVertex3f(14.8,30.2,0);
+    glVertex3f(27.2,30.2,0);
+    glEnd();
+}
+void path3()
+{
+    glLineWidth(10);
+    glBegin(GL_LINES);
+    glColor3f(1,0.7,0.2);
+    glVertex3f(27.2,30.2,0);
+    glVertex3f(27.2,9.7,0);
+    glEnd();
+}
+void path4()
+{
+    glLineWidth(10);
+    glBegin(GL_LINES);
+    glColor3f(0.8,.5,.4);
+    glVertex3f(27.2,9.7,0);
+    glVertex3f(14.8,9.7,0);
+    glEnd();
+}
+void path5()
+{
+    glLineWidth(10);
+    glBegin(GL_LINES);
+    glColor3f(1,0,1);
+    glVertex3f(9.8,18,0);
+    glVertex3f(14.8,9.7,0);
+    glEnd();
+}
+
 
 
 
@@ -940,10 +1016,12 @@ void init()
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(0,40,0,40,0,20);
+    PlaySound(TEXT("music.wav"),NULL,SND_SYNC);
 }
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
+
     glColor3f(0.0,0.0,0.0);
     roads();
     whiteroadmarks();
@@ -969,72 +1047,110 @@ void display()
         cloud1_move=-40;
 
     //man movement
-    if(time<300)
+    if(time<200)
     {
         firstwindow();
     }
-    else if (time>300 && time<600)
+    else if (time>=200 && time<700)
+    {
+        introduction();
+
+    }
+     else if (time>=700 && time<800)
     {
         man();
 
     }
-    else if (time>600 && time<800)
+
+    else if (time>=800 && time<950)
     {
         order();
         man();
     }
-    else if(time>=800 && time<1500)
+    else if(time>=950 && time<1500)
     {
         explainationwindow();
     }
     else if(time>=1500 && time<1800)
     {
        sourcetoA();
+
     }
     else if(time>=1800 && time<1900)
     {
         message1();
+        path1();
         man1();
     }
     else if(time>=1900 && time<2200)
     {
+        path1();
         fromAtoB();
     }
     else if(time>=2200 && time<2400)
     {
-        man2();
         message2();
+        path1();
+        path2();
+        man2();
     }
     else if(time>=2400 && time<2800)
     {
+        path1();
+        path2();
         fromBtoD();
     }
     else if(time>=2800 && time<2900)
     {
-        man3();
         message3();
+        path1();
+        path2();
+        path3();
+        man3();
     }
     else if(time>=2900 && time<3300)
     {
+         path1();
+        path2();
+        path3();
         fromDtoC();
     }
     else if(time>=3300 && time<3400)
     {
         message4();
+         path1();
+        path2();
+        path3();
+        path4();
         man4();
     }
     else if(time>=3400 && time<3700)
     {
+         path1();
+        path2();
+        path3();
+        path4();
         Dtosource();
     }
-    else if(time>=3800 && time<3900)
+    else if(time>=3700 && time<3900)
     {
         message5();
+         path1();
+        path2();
+        path3();
+        path4();
+        path5();
         man5();
     }
     else
+    {
+        path1();
+        path2();
+        path3();
+        path4();
+        path5();
         man5();
-
+    }
     glutSwapBuffers();
 }
 
@@ -1046,7 +1162,9 @@ int main(int argc,char** argv)
     glutInitWindowSize(1200,700);
     glutCreateWindow("THE ROAD WARRIOR");
     init();
+
     glutDisplayFunc(display);
+
     glutTimerFunc(25,update,0);
     glutMainLoop();
     return 0;
