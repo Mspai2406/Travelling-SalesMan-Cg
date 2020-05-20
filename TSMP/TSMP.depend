@@ -222,7 +222,14 @@
 1341006774 c:\program files (x86)\codeblocks\mingw\include\math.h
 	<_mingw.h>
 
-1589560665 source:c:\users\hp\desktop\travelling-salesman-cg\tsmp\main.cpp
+1589869567 source:c:\users\hp\desktop\travelling-salesman-cg\tsmp\main.cpp
+	<windows.h>
+	<gl/glut.h>
+	<math.h>
+	<string.h>
+	<mmsystem.h>
+
+1589602268 source:c:\users\hp\desktop\cg_project\tsmp1\main.cpp
 	<windows.h>
 	<gl/glut.h>
 	<math.h>
