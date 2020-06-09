@@ -1,4 +1,4 @@
-<br> <h2>Travelling-SalesMan🏃‍♂️</h2>
+<h2>Travelling-SalesMan🏃‍♂️</h2>
 <br>
 <h4>About the project:</h4><br>
 <ul><li>The project is based on the Dijikstra's algorithm to find single source shortest path.</li>
